@@ -10,7 +10,8 @@
 #define DIR2  33
 #define SPEED 350 
 
-
+float simpleGearRatio = 13.7336;
+float simpleSchneke = 12.0;
 float gearRatio = 15.3;
 int schneke = 48;
 float microsteps = 800;
@@ -22,9 +23,9 @@ const int channel2 = 2;
 
 //Motors with planetary gears
 //const int freq1 = (microsteps * gearRatio) / 7;
-//const int freq2 = (microsteps * gearRatio) / 75;
+//const int freq2 = (microsteps * simpleGearRatio) / 75;
 
-const int freq1 = (microsteps) / 7;
+const int freq1 = ((microsteps * simpleGearRatio * simpleSchneke) / 60) / 15;
 const int freq2 = (microsteps) / 75;
 
 const int resolution = 8;
