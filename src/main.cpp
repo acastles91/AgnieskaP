@@ -12,7 +12,7 @@
 
 float simpleGearRatio = 13.7336;
 float simpleSchneke = 12.0;
-float gearRatio = 15.3;
+float gearRatio = 1;
 int schneke = 48;
 float microsteps = 800;
 float correction1 = 0.406;
@@ -25,7 +25,9 @@ const int channel2 = 2;
 //const int freq1 = (microsteps * gearRatio) / 7;
 //const int freq2 = (microsteps * simpleGearRatio) / 75;
 
-const int freq1 = ((microsteps * simpleGearRatio * simpleSchneke) / 60) / 15;
+//One turn every minute
+
+const int freq1 = (microsteps * simpleGearRatio * simpleSchneke) / 60;
 const int freq2 = (microsteps) / 75;
 
 const int resolution = 8;
@@ -43,8 +45,8 @@ pinMode(STEP2, OUTPUT);
 pinMode(DIR2, OUTPUT);
 
 digitalWrite(EN, LOW);
-digitalWrite(DIR1, LOW);
-digitalWrite(DIR2, LOW);
+digitalWrite(DIR1, HIGH);
+digitalWrite(DIR2, HIGH);
 
 
 //PWM
