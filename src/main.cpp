@@ -10,9 +10,9 @@
 #define DIR2  33
 #define SPEED 350 
 
-float simpleGearRatio = 13.7336;
-float simpleSchneke = 12.0;
-float gearRatio = 1;
+float simpleGearRatio = 1.0;
+float simpleSchneke = 24.0;
+float gearRatio = 15.3;
 int schneke = 48;
 float microsteps = 800;
 float correction1 = 0.406;
@@ -25,7 +25,7 @@ const int channel2 = 2;
 //const int freq1 = (microsteps * gearRatio) / 7;
 //const int freq2 = (microsteps * simpleGearRatio) / 75;
 
-//One turn every minute
+//One revolution per minute
 
 const int freq1 = (microsteps * simpleGearRatio * simpleSchneke) / 60;
 const int freq2 = (microsteps) / 75;
@@ -36,6 +36,7 @@ const int resolution = 8;
 void setup() {
 
 esp_task_wdt_init(30, false);
+esp_task_wdt_deinit();
 Serial.begin(115200);
 
 pinMode(EN, OUTPUT);
@@ -45,8 +46,8 @@ pinMode(STEP2, OUTPUT);
 pinMode(DIR2, OUTPUT);
 
 digitalWrite(EN, LOW);
-digitalWrite(DIR1, HIGH);
-digitalWrite(DIR2, HIGH);
+digitalWrite(DIR1, LOW);
+digitalWrite(DIR2, LOW);
 
 
 //PWM
